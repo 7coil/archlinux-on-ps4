@@ -8,6 +8,8 @@ I'm using Arch Linux to run these steps, but these steps may be reproducable on 
 
 > (Writers note: Feel free to ignore these writers notes, especially if you're not technically inclined; these notes are for those who feel like they're up for a challenge.)
 
+In each step, choose one (and only one) of the bullet points to follow, depending on what you like/are using.
+
 1. Fetching Files
     - [From the internet!](./steps/1/files.md)
 2. Partitioning your filesystem
@@ -17,6 +19,7 @@ I'm using Arch Linux to run these steps, but these steps may be reproducable on 
 4. Writing the rootfs to the EXT4 partition
     - [With the terminal!](./steps/4/rootfs.md)
 5. Initialising the operating system
+    - [Chrooting](./steps/5/arch-chroot.md)
     - [Like a professional](https://wiki.archlinux.org/title/Installation_guide)
 6. Use your PS4 payload to run the Linux loader
     - This page hasn't been created, as it is assumed that you already know how to do this.  
