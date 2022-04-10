@@ -1,8 +1,6 @@
-# 5.a. Initialising Arch Linux with Arch Install Scripts
+# 5.a. Initialising Arch Linux
 
 Just like how you would do it from a LiveCD, this step outlines how to set-up your Arch Linux installation.
-
-Don't forget to install `arch-install-scripts`.
 
 The following instructions assume that your terminal is currently located within the `psxitarch` EXT4 folder.
 
@@ -23,7 +21,18 @@ I uncommented the Kentish `mirrorservice.org`, because I live within the United 
 ## 5.a.2. Start your chroot
 
 ```bash
+# Only if you have `arch-install-scripts` installed
 sudo arch-chroot "$(pwd)"
+```
+
+```bash
+# If you don't have `arch-install-scripts` installed
+cp /etc/resolv.conf /tmp/root.x86_64/etc
+mount --rbind /proc /tmp/root.x86_64/proc
+mount --rbind /sys /tmp/root.x86_64/sys
+mount --rbind /dev /tmp/root.x86_64/dev
+mount --rbind /run /tmp/root.x86_64/run
+chroot /tmp/root.x86_64/
 ```
 
 ## 5.a.3. Set your internationalisation settings
