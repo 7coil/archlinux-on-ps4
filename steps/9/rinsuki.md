@@ -30,8 +30,17 @@ cd ..
 cd mesa-ps4
 makepkg -si
 cd ..
+```
 
-# Move onto lib32-mesa
+Happen to also be installing Steam?
+You also need a 32-bit copy.
+
+Don't forget to enable [multilib](https://wiki.archlinux.org/title/official_repositories#Enabling_multilib) first, then doing a system upgrade (yay) to fully enable it.
+
+```bash
+# Aforementioned system upgrade
+yay
+
 cd lib32-mesa-ps4
 makepkg -si
 cd ..
