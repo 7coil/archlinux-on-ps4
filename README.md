@@ -3,10 +3,26 @@
 _Why would you use someone else's distro, when you can start from scratch?_
 
 I'm using Arch Linux to run these steps, but these steps may be reproducable on other operating systems.
+For instance, the _Chrooting_ step may be done within Microsoft Windows WSL.
 
-## Guide
+## Pre-Made Root Filesystems
+
+To save time, I have done most of the heavy lifting and done all steps (except for step 8), to save time.
+
+1. Simply [fetch all the files](./steps/1/files.md), and grab your root filesystem here [releases](https://github.com/7coil/archlinux-on-ps4/releases)
+2. Plop all of these files onto a FAT32 formatted USB stick.
+3. Use your PS4 payload to run the Linux loader
+    - Instructions on how to do so are not included, as it is out of scope for this repository.  
+    ...but if you really wanted it, create a GitHub issue.
+4. Run `install-psxitarch.sh` in the rescue shell
+5. Install a desktop environment!
+    - [gnome](./steps/8/gnome.md)
+
+## Doing it from Scratch Guide
 
 > (Writers note: Feel free to ignore these writers notes, especially if you're not technically inclined; these notes are for those who feel like they're up for a challenge.)
+
+These instructions were written as I was performing them, so some instructions may be missing. Create a GitHub issue if you find anything wrong.
 
 In each step, choose one (and only one) of the bullet points to follow, depending on what you like/are using.
 
