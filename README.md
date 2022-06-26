@@ -45,9 +45,10 @@ In each step, choose one (and only one) of the bullet points to follow, dependin
     - [Use `sudo timedatectl set-time "yyyy-MM-dd hh:mm:ss"` to set the date/time](https://wiki.archlinux.org/title/System_time#Set_system_clock)
     - [Install NTP](https://wiki.archlinux.org/title/Network_Time_Protocol_daemon) to make sure your clock is always correct in the future.
 9. Installing a desktop environment
-    - [gnome](./steps/8/gnome.md)
+    - [gnome](./steps/9/gnome.md)
+    - [kde](./steps/9/kde.md)
 10. Fixing Video Drivers
-    - [Using rinsuki/ps4linux-video-drivers](./steps/9/rinsuki.md)
+    - [Using rinsuki/ps4linux-video-drivers](./steps/10/rinsuki.md)
 
 ## Extras
 - If you're trying to install Steam, you should be able to follow the instructions within the [Arch Linux Wiki](https://wiki.archlinux.org/title/steam)
