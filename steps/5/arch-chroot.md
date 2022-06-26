@@ -35,12 +35,6 @@ mount --rbind /run /tmp/root.x86_64/run
 chroot /tmp/root.x86_64/
 ```
 
-## 5.a.3. Set your internationalisation settings
-
-Follow the Arch Wiki steps on _Time Zone_, _Localisation_ and _Network Configuration_
-
-[Arch Wiki](https://wiki.archlinux.org/title/Installation_guide)
-
 ## 5.a.3. Update your system
 
 ```bash
@@ -89,3 +83,9 @@ Don't forget to set your passwords!
 passwd
 passwd leondro
 ```
+
+## 5.a.7. Set your internationalisation settings
+
+Follow the Arch Wiki steps on _Time Zone_, _Localisation_ and _Network Configuration_
+
+[Arch Wiki](https://wiki.archlinux.org/title/Installation_guide)
