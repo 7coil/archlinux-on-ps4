@@ -12,7 +12,9 @@ Format (aka initialise) your disks
 
 ![](./gnome-format.png)
 
-It shouldn't really matter what partitioning system you choose, but I chose GPT because it supports partitions greater than 2TB.
+Choose GPT, especially if you want to use a disk larger than 2tb in size.
+
+> (Writers note: I learned the hard way with a 4tb hard drive that MBR is not the correct option.)
 
 ## 2.a.2. Partition your disks
 

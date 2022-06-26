@@ -1,4 +1,4 @@
-# 9.a. @rinsuki / ps4linux-video-drivers
+# 10.a. @rinsuki / ps4linux-video-drivers
 
 The video drivers provided in Arch Linux aren't fully compatible with the PS4.
 
@@ -9,7 +9,7 @@ Thankfully, @rinsuki has put in some hard work creating patches to help PS4s run
 
 https://github.com/rinsuki/ps4linux-video-drivers
 
-## 9.a.1. Clone the repository
+## 10.a.1. Clone the repository
 
 To start, make a copy of the patches, and move into the directory.
 
@@ -18,7 +18,7 @@ git clone https://github.com/rinsuki/ps4linux-video-drivers
 cd ps4linux-video-drivers
 ```
 
-## 9.a.2. Building various drivers
+## 10.a.2. Building various drivers
 
 ```bash
 # Start with the AMDGPU driver
@@ -46,7 +46,7 @@ makepkg -si
 cd ..
 ```
 
-## 9.a.3. Restart your desktop manager
+## 10.a.3. Restart your desktop manager
 
 - Gnome
     - `sudo systemctl restart gdm`

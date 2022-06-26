@@ -41,11 +41,16 @@ In each step, choose one (and only one) of the bullet points to follow, dependin
     ...but if you really wanted it, create a GitHub issue.
 7. Install a AUR Helper
     - [yay](https://github.com/Jguer/yay)
-8. Installing a desktop environment
+8. Make sure the time is set!
+    - [Use `sudo timedatectl set-time "yyyy-MM-dd hh:mm:ss"` to set the date/time](https://wiki.archlinux.org/title/System_time#Set_system_clock)
+    - [Install NTP](https://wiki.archlinux.org/title/Network_Time_Protocol_daemon) to make sure your clock is always correct in the future.
+9. Installing a desktop environment
     - [gnome](./steps/8/gnome.md)
-9. Fixing Video Drivers
+10. Fixing Video Drivers
     - [Using rinsuki/ps4linux-video-drivers](./steps/9/rinsuki.md)
 
 ## Extras
 - If you're trying to install Steam, you should be able to follow the instructions within the [Arch Linux Wiki](https://wiki.archlinux.org/title/steam)
     - If there's any missing graphics drivers, see if that folder exists (during Step 9)
+- Making your own `psxitarch.tar.xz` image:
+    - You can use `tar -cvJzf psxitarch.tar.xz `
