@@ -27,7 +27,15 @@ yay -S sddm sddm-kcm
 
 > (Writers note: `sddm-kcm` is for the KConfig Module... according to the [Arch Wiki](https://wiki.archlinux.org/title/SDDM))
 
-## 9.a.3 Enabling SDDM on boot (and also immediately running SDDM)
+## 9.a.3 Installing Desktop Applications
+
+You may wish to install some Desktop applications before you enter KDE with no way of using it.
+
+```bash
+yay -S firefox konsole
+```
+
+## 9.a.4 Enabling SDDM on boot (and also immediately running SDDM)
 
 ```bash
 sudo systemctl enable sddm --now
