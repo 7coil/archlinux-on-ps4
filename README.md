@@ -12,11 +12,11 @@ To save time, I have done most of the heavy lifting and done all steps (except f
 1. Simply [fetch all the files](./steps/1/files.md), and grab your root filesystem here [releases](https://github.com/7coil/archlinux-on-ps4/releases)
 2. Plop all of these files onto a FAT32 formatted USB stick.
 3. Use your PS4 payload to run the Linux loader
-    - Instructions on how to do so are not included, as it is out of scope for this repository.  
-    ...but if you really wanted it, create a GitHub issue.
+   - Instructions on how to do so are not included, as it is out of scope for this repository.  
+     ...but if you really wanted it, create a GitHub issue.
 4. Run `install-psxitarch.sh` in the rescue shell
 5. Install a desktop environment!
-    - [gnome](./steps/8/gnome.md)
+   - [gnome](./steps/8/gnome.md)
 
 ## Doing it from Scratch Guide
 
@@ -27,31 +27,33 @@ These instructions were written as I was performing them, so some instructions m
 In each step, choose one (and only one) of the bullet points to follow, depending on what you like/are using.
 
 1. Fetching Files
-    - [From the internet!](./steps/1/files.md)
+   - [From the internet!](./steps/1/files.md)
 2. Partitioning your filesystem
-    - [Using Gnome Disks](./steps/2/gnome-disks.md)
+   - [Using Gnome Disks](./steps/2/gnome-disks.md)
 3. Placing Files / Mounting Partitions!
-    - [Using a file manager!](./steps/3/gnome-files.md)
+   - [Using a file manager!](./steps/3/gnome-files.md)
 4. Writing the rootfs to the EXT4 partition
-    - [With the terminal!](./steps/4/rootfs.md)
+   - [With the terminal!](./steps/4/rootfs.md)
 5. Initialising the operating system
-    - [Chrooting](./steps/5/arch-chroot.md)
+   - [Chrooting](./steps/5/arch-chroot.md)
 6. Use your PS4 payload to run the Linux loader
-    - Instructions on how to do so are not included, as it is out of scope for this repository.  
-    ...but if you really wanted it, create a GitHub issue.
+   - Instructions on how to do so are not included, as it is out of scope for this repository.  
+     ...but if you really wanted it, create a GitHub issue.
 7. Install a AUR Helper
-    - [yay](https://github.com/Jguer/yay)
+   - [yay](https://github.com/Jguer/yay)
 8. Make sure the time is set!
-    - [Use `sudo timedatectl set-time "yyyy-MM-dd hh:mm:ss"` to set the date/time](https://wiki.archlinux.org/title/System_time#Set_system_clock)
-    - [Install NTP](https://wiki.archlinux.org/title/Network_Time_Protocol_daemon) to make sure your clock is always correct in the future.
+   - [Use `sudo timedatectl set-time "yyyy-MM-dd hh:mm:ss"` to set the date/time](https://wiki.archlinux.org/title/System_time#Set_system_clock)
+   - [Install NTP](https://wiki.archlinux.org/title/Network_Time_Protocol_daemon) to make sure your clock is always correct in the future.
 9. Installing a desktop environment
-    - [gnome](./steps/9/gnome.md)
-    - [kde](./steps/9/kde.md)
+   - [gnome](./steps/9/gnome.md)
+   - [kde](./steps/9/kde.md)
 10. Fixing Video Drivers
+    - [Pre-compiled version of rinsuki/ps4linux-video-drivers (by yours truly)](https://github.com/7coil/ps4linux-video-drivers)
     - [Using rinsuki/ps4linux-video-drivers](./steps/10/rinsuki.md)
 
 ## Extras
+
 - If you're trying to install Steam, you should be able to follow the instructions within the [Arch Linux Wiki](https://wiki.archlinux.org/title/steam)
-    - If there's any missing graphics drivers, see if that folder exists (during Step 9)
+  - If there's any missing graphics drivers, see if that folder exists (during Step 9)
 - Making your own `psxitarch.tar.xz` image:
-    - You can use `tar -cvJzf psxitarch.tar.xz `
+  - You can use `tar -cvJzf psxitarch.tar.xz `
