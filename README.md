@@ -56,4 +56,4 @@ In each step, choose one (and only one) of the bullet points to follow, dependin
 - If you're trying to install Steam, you should be able to follow the instructions within the [Arch Linux Wiki](https://wiki.archlinux.org/title/steam)
   - If there's any missing graphics drivers, see if that folder exists (during Step 9)
 - Making your own `psxitarch.tar.xz` image:
-  - You can use `tar -cvJzf psxitarch.tar.xz `
+  - You can use `tar -cvJf psxitarch.tar.xz `
