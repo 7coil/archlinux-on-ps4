@@ -1,0 +1,94 @@
+name: Create Arch Linux image
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Download Reflector
+        run: wget https://xyne.dev/projects/reflector/src/reflector-2021.11.tar.xz
+
+      - name: Run Reflector to obtain closest Arch Linux mirrors
+        run: |
+          tar -xvJf reflector-2021.11.tar.xz
+          sudo python3 reflector-2021.11/Reflector.py --latest 5 --sort rate --save mirrorlist
+
+      - name: Download Arch Linux
+        run: wget https://www.mirrorservice.org/sites/ftp.archlinux.org/iso/latest/archlinux-bootstrap-x86_64.tar.gz
+
+      - name: Install dependencies
+        run: |
+          sudo mkdir archlinux
+          sudo tar --numeric-owner --strip-components=1 -xvpf archlinux-bootstrap-x86_64.tar.gz -C archlinux
+
+          sudo cp /etc/resolv.conf archlinux/etc
+          sudo cp mirrorlist archlinux/etc/pacman.d/mirrorlist
+
+          sudo mount -t proc /proc archlinux/proc/
+          sudo mount -t sysfs /sys archlinux/sys/
+          sudo mount --rbind /dev archlinux/dev/
+          sudo mount --rbind /run archlinux/run/
+
+          sudo chroot archlinux/ << "EOT"
+          sed -i 's/CheckSpace/#CheckSpace/g' /etc/pacman.conf
+          sed -i 's/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/g' /etc/locale.gen
+          sed -i 's/#en_GB.UTF-8 UTF-8/en_GB.UTF-8 UTF-8/g' /etc/locale.gen
+          locale-gen
+
+          echo "LANG=en_GB.UTF-8" >> /etc/locale.conf
+          echo "KEYMAP=uk" >> /etc/vconsole.conf
+          echo "playstation" >> /etc/hostname
+          ln -sf /usr/share/zoneinfo/Europe/London /etc/localetime
+
+          cat >> /etc/pacman.conf << "EOF"
+          [multilib]
+          Include = /etc/pacman.d/mirrorlist
+
+          [sevencoil]
+          SigLevel = Optional DatabaseOptional
+          Server = https://archlinux.leondrolio.com/packages/$repo/os/$arch
+          EOF
+
+          useradd -m pi -G wheel
+          passwd pi
+          raspberry
+          raspberry
+
+          pacman-key --init
+          pacman-key --populate archlinux
+          pacman --noconfirm -Syu
+          pacman --noconfirm -S networkmanager git base-devel nano htop wget curl sudo reflector ntp mesa-ps4 lib32-libdrm-ps4 lib32-mesa-ps4 libdrm-ps4
+          systemctl enable NetworkManager
+          systemctl enable ntpd
+          timedatectl set-ntp true
+
+          echo '%wheel ALL=(ALL:ALL) NOPASSWD: ALL' >> /etc/sudoers
+          echo 'Defaults lecture="never"' >> /etc/sudoers
+
+          su pi
+            cd ~/
+            touch ~/.sudo_as_admin_successful
+
+            git clone https://aur.archlinux.org/yay-bin.git
+            cd yay-bin
+            makepkg -si --noconfirm
+            cd ..
+          exit
+          EOT
+
+      - name: Package Arch Linux
+        working-directory: ./archlinux
+        run: tar -cvJf psxitarch.tar.xz .
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: sevencoil-ps4-linux
+          path: archlinux/psxitarch.tar.xz
