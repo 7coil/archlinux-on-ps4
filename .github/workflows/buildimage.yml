@@ -83,6 +83,11 @@ jobs:
           exit
           EOT
 
+          sudo umount archlinux/proc/
+          sudo umount archlinux/sys/
+          sudo umount archlinux/dev/
+          sudo umount archlinux/run/
+
       - name: Package Arch Linux
         working-directory: ./archlinux
         run: tar -cvJf ../psxitarch.tar.xz .
