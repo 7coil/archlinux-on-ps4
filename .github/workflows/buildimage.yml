@@ -83,10 +83,10 @@ jobs:
           exit
           EOT
 
-          sudo umount archlinux/proc/
-          sudo umount archlinux/sys/
-          sudo umount archlinux/dev/
-          sudo umount archlinux/run/
+          sudo umount -l archlinux/proc/
+          sudo umount -l archlinux/sys/
+          sudo umount -l archlinux/dev/
+          sudo umount -l archlinux/run/
 
       - name: Package Arch Linux
         working-directory: ./archlinux
