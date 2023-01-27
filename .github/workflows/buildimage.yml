@@ -85,10 +85,10 @@ jobs:
 
       - name: Package Arch Linux
         working-directory: ./archlinux
-        run: tar -cvJf psxitarch.tar.xz .
+        run: tar -cvJf ../psxitarch.tar.xz .
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
           name: sevencoil-ps4-linux
-          path: archlinux/psxitarch.tar.xz
+          path: psxitarch.tar.xz
