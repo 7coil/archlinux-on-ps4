@@ -26,7 +26,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo mkdir archlinux
-          sudo tar --numeric-owner --strip-components=1 -xvpf archlinux-bootstrap-x86_64.tar.gz -C archlinux
+          sudo tar --numeric-owner --strip-components=1 -xpf archlinux-bootstrap-x86_64.tar.gz -C archlinux
 
           sudo cp /etc/resolv.conf archlinux/etc
           sudo cp mirrorlist archlinux/etc/pacman.d/mirrorlist
@@ -90,7 +90,7 @@ jobs:
 
       - name: Package Arch Linux
         working-directory: ./archlinux
-        run: tar -cvJf ../psxitarch.tar.xz .
+        run: sudo tar -cJf ../psxitarch.tar.xz .
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
