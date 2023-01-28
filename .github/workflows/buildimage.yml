@@ -73,14 +73,16 @@ jobs:
           echo 'Defaults lecture="never"' >> /etc/sudoers
 
           su pi
-            cd ~/
-            touch ~/.sudo_as_admin_successful
+          cd ~/
+          touch ~/.sudo_as_admin_successful
 
-            git clone https://aur.archlinux.org/yay-bin.git
-            cd yay-bin
-            makepkg -si --noconfirm
-            cd ..
+          git clone https://aur.archlinux.org/yay-bin.git
+          cd yay-bin
+          makepkg -si --noconfirm
+          cd ..
           exit
+
+          sudo tar -cpJf psxitarch.tar.xz --exclude /psxitarch.tar.xz --one-file-system /
           EOT
 
           sudo umount -l archlinux/proc/
@@ -88,12 +90,8 @@ jobs:
           sudo umount -l archlinux/dev/
           sudo umount -l archlinux/run/
 
-      - name: Package Arch Linux
-        working-directory: ./archlinux
-        run: sudo tar -cJf ../psxitarch.tar.xz .
-
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
           name: sevencoil-ps4-linux
-          path: psxitarch.tar.xz
+          path: archlinux/psxitarch.tar.xz
