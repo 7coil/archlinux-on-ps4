@@ -37,6 +37,8 @@ jobs:
           sudo mount --rbind /run archlinux/run/
 
           sudo chroot archlinux/ << "EOT"
+          echo "LABEL=psxitarch / ext4 rw,relatime,data=ordered 0 1" >> /etc/fstab
+
           sed -i 's/CheckSpace/#CheckSpace/g' /etc/pacman.conf
           sed -i 's/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/g' /etc/locale.gen
           sed -i 's/#en_GB.UTF-8 UTF-8/en_GB.UTF-8 UTF-8/g' /etc/locale.gen
