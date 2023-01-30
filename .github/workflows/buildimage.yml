@@ -56,6 +56,10 @@ jobs:
           [sevencoil]
           SigLevel = Optional DatabaseOptional
           Server = https://archlinux.leondrolio.com/packages/$repo/os/$arch
+
+          [ps4]
+          SigLevel = Never
+          Server = https://psxita.it/repo-testing
           EOF
 
           mkdir -p /lib/firmware/edid
@@ -68,7 +72,7 @@ jobs:
           pacman-key --init
           pacman-key --populate archlinux
           pacman --noconfirm -Syu
-          pacman --noconfirm -S networkmanager git base-devel nano htop wget curl sudo reflector ntp mesa-ps4 lib32-libdrm-ps4 lib32-mesa-ps4 libdrm-ps4
+          pacman --noconfirm -S networkmanager git base-devel nano htop wget curl sudo reflector ntp mesa-git lib32-libdrm-git lib32-mesa-git libdrm-git llvm14-libs
           systemctl enable NetworkManager
           systemctl enable ntpd
           timedatectl set-ntp true
