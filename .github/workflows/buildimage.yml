@@ -75,6 +75,7 @@ jobs:
           pacman --noconfirm -S networkmanager git base-devel nano htop wget curl sudo reflector ntp mesa-git lib32-libdrm-git lib32-mesa-git libdrm-git llvm14-libs
           systemctl enable NetworkManager
           systemctl enable ntpd
+          systemctl enable systemd-timesyncd
           timedatectl set-ntp true
 
           echo '%wheel ALL=(ALL:ALL) NOPASSWD: ALL' >> /etc/sudoers

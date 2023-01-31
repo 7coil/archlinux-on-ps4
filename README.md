@@ -1,59 +1,46 @@
 # Arch Linux on PS4
 
-_Why would you use someone else's distro, when you can start from scratch?_
+This repository aims to create a usable instance of Arch Linux, following the Arch Linux release cycle of roughly every month.
+This is achieved by using GitHub Actions to create a new and up-to-date `psxitarch.tar.gz` on demand.
 
-I'm using Arch Linux to run these steps, but these steps may be reproducable on other operating systems.
-For instance, the _Chrooting_ step may be done within Microsoft Windows WSL.
+[The old instructions on how to do this manually is now in the steps folder](./steps/README.md)
 
-## Pre-Made Root Filesystems
+These images are generated on-demand by a script and should work on all Playstation 4 consoles.
 
-To save time, I have done most of the heavy lifting and done all steps (except for step 8), to save time.
+As well as the base Arch Linux packages, the following have been installed.
 
-1. Simply [fetch all the files](./steps/1/files.md), and grab your root filesystem here [releases](https://github.com/7coil/archlinux-on-ps4/releases)
-2. Plop all of these files onto a FAT32 formatted USB stick.
-3. Use your PS4 payload to run the Linux loader
-   - Instructions on how to do so are not included, as it is out of scope for this repository.  
-     ...but if you really wanted it, create a GitHub issue.
-4. Run `install-psxitarch.sh` in the rescue shell
-5. Install a desktop environment!
-   - [gnome](./steps/8/gnome.md)
+| Package          | Comment                              |
+| ---------------- | ------------------------------------ |
+| networkmanager   |                                      |
+| git              |                                      |
+| base-devel       |                                      |
+| nano             |                                      |
+| htop             |                                      |
+| wget             |                                      |
+| curl             |                                      |
+| sudo             |                                      |
+| reflector        |                                      |
+| ntp              |                                      |
+| mesa-git         | psxitarch GPU drivers                |
+| lib32-libdrm-git | psxitarch GPU drivers                |
+| lib32-mesa-git   | psxitarch GPU drivers                |
+| libdrm-git       | psxitarch GPU drivers                |
+| llvm14-libs      | Required for GPU acceleration in X11 |
 
-## Doing it from Scratch Guide
+## Downloads
 
-> (Writers note: Feel free to ignore these writers notes, especially if you're not technically inclined; these notes are for those who feel like they're up for a challenge.)
+To find the latest `psxitarch.tar.xz` file, go to [GitHub Actions](https://github.com/7coil/archlinux-on-ps4/actions) and download the artifact file.
 
-These instructions were written as I was performing them, so some instructions may be missing. Create a GitHub issue if you find anything wrong.
+## Quick Usage
 
-In each step, choose one (and only one) of the bullet points to follow, depending on what you like/are using.
-
-1. Fetching Files
-   - [From the internet!](./steps/1/files.md)
-2. Partitioning your filesystem
-   - [Using Gnome Disks](./steps/2/gnome-disks.md)
-3. Placing Files / Mounting Partitions!
-   - [Using a file manager!](./steps/3/gnome-files.md)
-4. Writing the rootfs to the EXT4 partition
-   - [With the terminal!](./steps/4/rootfs.md)
-5. Initialising the operating system
-   - [Chrooting](./steps/5/arch-chroot.md)
-6. Use your PS4 payload to run the Linux loader
-   - Instructions on how to do so are not included, as it is out of scope for this repository.  
-     ...but if you really wanted it, create a GitHub issue.
-7. Install a AUR Helper
-   - [yay](https://github.com/Jguer/yay)
-8. Make sure the time is set!
-   - [Use `sudo timedatectl set-time "yyyy-MM-dd hh:mm:ss"` to set the date/time](https://wiki.archlinux.org/title/System_time#Set_system_clock)
-   - [Install NTP](https://wiki.archlinux.org/title/Network_Time_Protocol_daemon) to make sure your clock is always correct in the future.
-9. Installing a desktop environment
-   - [gnome](./steps/9/gnome.md)
-   - [kde](./steps/9/kde.md)
-10. Fixing Video Drivers
-    - [Pre-compiled version of rinsuki/ps4linux-video-drivers (by yours truly)](https://github.com/7coil/ps4linux-video-drivers)
-    - [Using rinsuki/ps4linux-video-drivers](./steps/10/rinsuki.md)
-
-## Extras
-
-- If you're trying to install Steam, you should be able to follow the instructions within the [Arch Linux Wiki](https://wiki.archlinux.org/title/steam)
-  - If there's any missing graphics drivers, see if that folder exists (during Step 9)
-- Making your own `psxitarch.tar.xz` image:
-  - You can use `tar -cvJf psxitarch.tar.xz `
+1. Download a kernel (`bzImage`) and initial root file system (`initramfs.cpio.gz`)
+   - https://github.com/Hakkuraifu/PS4Linux-Documentation
+2. Find the `psxitarch.tar.gz` inside the artifact zip from [GitHub Actions](https://github.com/7coil/archlinux-on-ps4/actions)
+3. Place all three files into a FAT32 USB mass storage device
+4. Start the Linux payload with your corrupt _exfat_ USB mass storage device
+   - You can use this site to help: https://hippie68.github.io/
+5. Run `install-psxitarch.sh`
+   - It won't work immediately. Sorry.
+6. Reboot your PS4 and reload your Linux payload
+7. You can now brag about using Arch Linux
+8. Install a desktop environment like KDE.
