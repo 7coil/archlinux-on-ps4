@@ -13,12 +13,12 @@ jobs:
           python-version: "3.11"
 
       - name: Download Reflector
-        run: wget https://xyne.dev/projects/reflector/src/reflector-2021.11.tar.xz
+        run: wget https://xyne.dev/projects/reflector/src/reflector-2023.tar.xz
 
       - name: Run Reflector to obtain closest Arch Linux mirrors
         run: |
-          tar -xvJf reflector-2021.11.tar.xz
-          sudo python3 reflector-2021.11/Reflector.py --latest 5 --sort rate --save mirrorlist
+          tar -xvJf reflector-2023.tar.xz
+          sudo python3 reflector-2023/Reflector.py --latest 5 --sort rate --save mirrorlist
 
       - name: Download Arch Linux
         run: wget https://www.mirrorservice.org/sites/ftp.archlinux.org/iso/latest/archlinux-bootstrap-x86_64.tar.gz
